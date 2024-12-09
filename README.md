@@ -1,24 +1,24 @@
-<h1>bbc.js 🌟</h1>
+<h1>bbc.ts 🌟</h1>
 <div>
-  <a href="https://www.npmjs.com/package/bbc.js">
-    <img src="https://img.shields.io/npm/v/bbc.js.svg" alt="npm version" />
+  <a href="https://www.npmjs.com/package/bbc.ts">
+    <img src="https://img.shields.io/npm/v/bbc.ts.svg" alt="npm version" />
   </a>
-  <a href="https://www.npmjs.com/package/bbc.js">
-    <img src="https://img.shields.io/npm/dm/bbc.js.svg" alt="npm downloads" />
+  <a href="https://www.npmjs.com/package/bbc.ts">
+    <img src="https://img.shields.io/npm/dm/bbc.ts.svg" alt="npm downloads" />
   </a>
-  <a href="https://github.com/rit3zh/bbc.js/blob/main/LICENSE">
-    <img src="https://img.shields.io/npm/l/bbc.js.svg" alt="license" />
+  <a href="https://github.com/rit3zh/bbc.ts/blob/main/LICENSE">
+    <img src="https://img.shields.io/npm/l/bbc.ts.svg" alt="license" />
   </a>
 </div>
 
-**bbc.js** is a lightweight library to fetch search suggestions and perform detailed searches with structured results from the BBC website.
+**bbc.ts** is a lightweight library to fetch search suggestions and perform detailed searches with structured results from the BBC website.
 
 ---
 
 ## Installation
 
 ```bash
-npm install bbc.js
+npm install bbc.ts
 ```
 
 ---
@@ -35,7 +35,7 @@ npm install bbc.js
 ### Importing the Functions
 
 ```typescript
-import { suggestions, search } from "bbc.js";
+import { suggestions, search } from "bbc.ts";
 ```
 
 ---
@@ -55,7 +55,7 @@ async function suggestions<T extends string>(query: T): Promise<ISuggestions[]>;
 #### Example:
 
 ```typescript
-import { suggestions } from "bbc.js";
+import { suggestions } from "bbc.ts";
 
 (async () => {
   const query = "football";
@@ -92,7 +92,7 @@ async function search<T extends ISearchOptions>(
 #### Example:
 
 ```typescript
-import { search } from "bbc.js";
+import { search } from "bbc.ts";
 
 (async () => {
   const searchOptions = {
@@ -194,14 +194,14 @@ export interface ISearchMetaData {
 
 ## Contributing
 
-## We welcome contributions! Feel free to submit issues or pull requests to help improve **bbc.js**.
+## We welcome contributions! Feel free to submit issues or pull requests to help improve **bbc.ts**.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/rit3zh/bbc.js/blob/main/LICENSE) file for more details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/rit3zh/bbc.ts/blob/main/LICENSE) file for more details.
 
 ---
 
 ## Links
 
-- **GitHub Repository**: [bbc.js on GitHub](https://github.com/rit3zh/bbc.js)
+- **GitHub Repository**: [bbc.ts on GitHub](https://github.com/rit3zh/bbc.ts)
