@@ -2,6 +2,9 @@
   "name": "bbc.ts",
   "version": "1.0.0",
   "main": "dist/index.js",
+  "repository": {
+    "url": "https://github.com/rit3zh/bbc-ts"
+  },
   "license": "MIT",
   "scripts": {
     "watch": "tsx watch src/index.ts",
