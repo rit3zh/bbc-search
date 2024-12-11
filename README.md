@@ -1,4 +1,5 @@
-<h1>bbc.ts 🌟</h1>
+# bbc.ts 🌟
+
 <div>
   <a href="https://www.npmjs.com/package/bbc.ts">
     <img src="https://img.shields.io/npm/v/bbc.ts.svg" alt="npm version" />
@@ -27,6 +28,7 @@ npm install bbc.ts
 
 - Fetch search suggestions based on a query.
 - Perform detailed searches with metadata-rich results.
+- Retrieve news details including headlines, author, timestamp, paragraphs, images, and topics.
 
 ---
 
@@ -35,7 +37,7 @@ npm install bbc.ts
 ### Importing the Functions
 
 ```typescript
-import { suggestions, search } from "bbc.ts";
+import { suggestions, search, getNews } from "bbc.ts";
 ```
 
 ---
@@ -68,10 +70,10 @@ import { suggestions } from "bbc.ts";
 
 An array of objects, where each object includes:
 
-- **`title`**: The suggestion title.
-- **`url`**: A URL leading to the suggestion.
-- **`type`**: The category/type of the suggestion.
-- **`synopsis`** (optional): A short description of the suggestion.
+- **title**: The suggestion title.
+- **url**: A URL leading to the suggestion.
+- **type**: The category/type of the suggestion.
+- **synopsis** (optional): A short description of the suggestion.
 
 ---
 
@@ -106,29 +108,67 @@ import { search } from "bbc.ts";
 
 #### Search Options:
 
-- **`query`** (required): The search keyword (string).
-- **`page`** (optional): The page number for paginated results (defaults to `0`).
+- **query** (required): The search keyword (string).
+- **page** (optional): The page number for paginated results (defaults to 0).
 
 #### Response:
 
 The function returns a `SearchResult` object with:
 
-- **`total`** (optional): Total number of results.
-- **`items`**: An array of `SearchItems`.
+- **total** (optional): Total number of results.
+- **items**: An array of `SearchItems`.
 
 Each `SearchItem` contains:
 
-- **`title`**: The item's title.
-- **`description`** (optional): A brief description.
-- **`live`** (optional): Boolean indicating if the item is live.
-- **`metadata`**: An `ISearchMetaData` object containing:
-  - `published`: The published date (string).
-  - `lastUpdated`: The last updated date (string).
-  - `type`: The content type (e.g., article, video).
-  - `subtype`: Subcategory of the content.
-- **`image`**: The URL to the item's image (string).
-- **`related`**: Array of related items (if available).
-- **`href`**: Link to the item's page.
+- **title**: The item's title.
+- **description** (optional): A brief description.
+- **live** (optional): Boolean indicating if the item is live.
+- **metadata**: An `ISearchMetaData` object containing:
+  - published: The published date (string).
+  - lastUpdated: The last updated date (string).
+  - type: The content type (e.g., article, video).
+  - subtype: Subcategory of the content.
+- **image**: The URL to the item's image (string).
+- **related**: Array of related items (if available).
+- **href**: Link to the item's page.
+
+---
+
+### 3. **Getting News Details**
+
+#### Description:
+
+Fetches detailed news information from a given URL, including the headline, author, timestamp, paragraphs, images, and topics.
+
+#### Function Signature:
+
+```typescript
+async function getNews<T extends string>(url: T): Promise<INews>;
+```
+
+#### Example:
+
+```typescript
+import { getNews } from "bbc.ts";
+
+(async () => {
+  const newsUrl = "https://www.bbc.com/news/articles/cd0enn3kekyo"; // example
+  const newsDetails = await getNews(newsUrl);
+  console.log(newsDetails);
+})();
+```
+
+#### Response:
+
+Returns an `INews` object containing:
+
+- **headline**: The headline of the news article.
+- **role**: The role of the person (e.g., reporter).
+- **author**: The name of the author.
+- **timestamp**: The time when the article was published.
+- **paragraph**: An array of paragraphs from the news article.
+- **images**: An array of image URLs associated with the article.
+- **topics**: An array of topics related to the article.
 
 ---
 
@@ -190,11 +230,30 @@ export interface ISearchMetaData {
 }
 ```
 
+#### INews
+
+```typescript
+export interface INews {
+  headline?: string;
+  role?: string;
+  author?: string;
+  timestamp?: string;
+  paragraph?: string[];
+  images?: string[];
+  topics?: ITopics;
+}
+
+export interface ITopics {
+  title?: string;
+  url?: string;
+}
+```
+
 ---
 
 ## Contributing
 
-## We welcome contributions! Feel free to submit issues or pull requests to help improve **bbc.ts**.
+We welcome contributions! Feel free to submit issues or pull requests to help improve **bbc.ts**.
 
 ## License
 
